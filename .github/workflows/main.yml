@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Manually Deploy to Heroku
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: DEBIAN_FRONTEND=noninteractive
+
+    - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          usedocker: true
+          docker_heroku_process_type: web
+          stack: "container"
+          region: "us"
+     build:
+       docker:
+         worker: Dockerfile
+     run:
+       worker: bash run.sh
