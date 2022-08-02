@@ -14,8 +14,8 @@ jobs:
           docker_heroku_process_type: web
           stack: "container"
           region: "us"
-      build:
+    build:
        docker:
          worker: Dockerfile
-      run:
-       worker: bash run.sh
+       run:
+         worker: bash run.sh
